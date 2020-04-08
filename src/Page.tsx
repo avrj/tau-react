@@ -24,7 +24,7 @@ export class Page extends React.Component<PageProps> {
   }
 
   render() {
-    return <div className="ui-page" ref={this.pageRef}>
+    return <div className={"ui-page " + (this.props.active ? "ui-page-active" : "")} ref={this.pageRef}>
       {this.props.children}
     </div>
   }
