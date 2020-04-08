@@ -82,7 +82,13 @@ export class SectionChanger extends React.Component<SectionChangerProps> {
     this.indicator = tau.widget.PageIndicator(this.pageIndicatorRef.current, {numberOfPages: React.Children.count(this.props.children)});
 
     let children = React.Children.toArray(this.props.children);
-    let activeSection = children.findIndex(child => child && child.props && child.props.active ? child.props.active: false);
+    let activeSection = children.findIndex(child => {
+      if (child && React.isValidElement<{active: boolean}>(child)) {
+        return child.props && child.props.active ? child.props.active: false 
+      } else {
+        return false
+      }
+    });
     if(activeSection != -1) {
       this.indicator.setActive(activeSection);
     }
