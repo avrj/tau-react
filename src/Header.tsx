@@ -8,7 +8,7 @@ export interface HeaderProps {
 
 export class Header extends React.Component<HeaderProps> {
   render() {
-    return <header className={"ui-header" + this.props.onMoreButtonClicked? " ui-has-more":""}>
+    return <header className={"ui-header" + (this.props.onMoreButtonClicked? " ui-has-more":"")}>
       { this.props.title &&
         <h2 className="ui-title">
             {this.props.title}
